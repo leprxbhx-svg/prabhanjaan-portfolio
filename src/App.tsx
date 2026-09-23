@@ -183,7 +183,7 @@ export default function App() {
 
           <div className="hero-photo reveal">
             <img
-              src="/assets/profile.jpg"
+              src="assets/profile.jpg"
               alt="Prabhanjaan G.T — Video Editor & Web Creator"
             />
           </div>
@@ -309,7 +309,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
-                  src="/assets/ALA%20BOLELO.mp4"
+                  src="assets/ALA%20BOLELO.mp4"
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -333,7 +333,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
-                  src="/assets/HUNTER%20350.mp4"
+                  src="assets/HUNTER%20350.mp4"
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -356,7 +356,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
-                  src="/assets/GT%20650%20KALYANI.mp4"
+                  src="assets/GT%20650%20KALYANI.mp4"
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -379,7 +379,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
-                  src="/assets/MEHABOOBA.mp4"
+                  src="assets/MEHABOOBA.mp4"
                 >
                   Your browser does not support the video tag.
                 </video>
