@@ -329,7 +329,7 @@ export default function App() {
                   <span className="work-tag">Featured Edit</span>
                   <span className="work-tag work-tag-alt">Video Editing</span>
                 </div>
-                <h3 className="work-title">FRIENDS</h3>
+                <h3 className="work-title">Sample 1</h3>
                 <p className="work-desc">
                   A story-driven edit — cut with intent, coloured with mood, and finished
                   to make every frame count. Watch it right here on the page.
@@ -352,7 +352,7 @@ export default function App() {
                 <div className="work-meta">
                   <span className="work-tag work-tag-alt">Ride Edit</span>
                 </div>
-                <h3 className="work-title">HUNTER 350</h3>
+                <h3 className="work-title">Sample 2</h3>
                 <p className="work-desc">
                   A ride that speaks — punchy cuts synced to the thump of the Royal
                   Enfield Hunter 350.
@@ -375,7 +375,7 @@ export default function App() {
                 <div className="work-meta">
                   <span className="work-tag">Cinematic</span>
                 </div>
-                <h3 className="work-title">GT 650 KALYANI</h3>
+                <h3 className="work-title">Sample 3</h3>
                 <p className="work-desc">
                   Two wheels, one mood — a calm, cinematic ride-cut through the roads of
                   Kalyani.
@@ -398,7 +398,7 @@ export default function App() {
                 <div className="work-meta">
                   <span className="work-tag work-tag-alt">Vibe Edit</span>
                 </div>
-                <h3 className="work-title">MEHABOOBA</h3>
+                <h3 className="work-title">Sample 4</h3>
                 <p className="work-desc">
                   A smooth, groove-first edit designed to loop — strong hook, stronger
                   vibe.
