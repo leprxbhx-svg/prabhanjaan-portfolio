@@ -1,12 +1,21 @@
 import { useEffect } from "react";
 import { ShaderBackground } from "@/components/ui/sih";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import { RandomLetterSwap } from "@/components/ui/random-letter-swap";
 import "./App.css";
 
 const INSTAGRAM_URL =
   "https://www.instagram.com/le.prxbhx_?stkn=aWc0N2g2Nmh4NGdr";
 const WHATSAPP_URL =
   "https://wa.me/919994005837?text=Hi%20Prabhanjaan%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project.";
+
+const NAV_LINKS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "works", label: "Works" },
+  { id: "tools", label: "Tools" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function App() {
   useEffect(() => {
@@ -100,11 +109,16 @@ export default function App() {
           </a>
 
           <nav className="nav-links" id="navLinks">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#works">Works</a>
-            <a href="#tools">Tools</a>
-            <a href="#contact">Contact</a>
+            {NAV_LINKS.map(({ id, label }) => (
+              <a href={"#" + id} key={id}>
+                <RandomLetterSwap
+                  className="nav-swap-link"
+                  label={label}
+                  staggerDuration={0.025}
+                  transition={{ duration: 0.6, type: "spring" }}
+                />
+              </a>
+            ))}
           </nav>
 
           <div className="nav-actions">

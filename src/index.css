@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+/* shadcn-style theme tokens (Tailwind v4 utilities such as
+   text-foreground / text-muted-foreground) mapped to the portfolio's
+   palette. `inline` keeps them pointing at the runtime CSS variables so
+   theme tweaks in App.css :root apply everywhere. */
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-muted: var(--bg-soft);
+  --color-muted-foreground: var(--muted);
+  --color-card: var(--card);
+  --color-card-foreground: var(--text);
+  --color-border: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-foreground: #04120f;
+  --color-primary: var(--accent);
+  --color-primary-foreground: #04120f;
+  --color-ring: var(--accent);
+}
