@@ -431,7 +431,9 @@ export default function App() {
 
           <div className="services tools-grid">
             <article className="service-card glass reveal">
-              <div className="service-icon">🎬</div>
+              <div className="service-icon tool-logo">
+                <img src="assets/capcut-logo.jpg" alt="CapCut logo" />
+              </div>
               <h3>CapCut</h3>
               <p>
                 The free editor behind millions of trending reels — AI captions,
@@ -442,7 +444,9 @@ export default function App() {
             </article>
 
             <article className="service-card glass reveal">
-              <div className="service-icon">✨</div>
+              <div className="service-icon tool-logo">
+                <img src="assets/after-effects-logo.webp" alt="Adobe After Effects logo" />
+              </div>
               <h3>After Effects</h3>
               <p>
                 The industry standard for motion graphics and cinematic visual
@@ -453,7 +457,9 @@ export default function App() {
             </article>
 
             <article className="service-card glass reveal">
-              <div className="service-icon">🎨</div>
+              <div className="service-icon tool-logo">
+                <img src="assets/picsart-logo.webp" alt="Picsart logo" />
+              </div>
               <h3>Picsart</h3>
               <p>
                 An all-in-one photo editor and design studio — thumbnails, posters
@@ -464,7 +470,9 @@ export default function App() {
             </article>
 
             <article className="service-card glass reveal">
-              <div className="service-icon">📸</div>
+              <div className="service-icon tool-logo">
+                <img src="assets/photoroom-logo.avif" alt="PhotoRoom logo" />
+              </div>
               <h3>PhotoRoom</h3>
               <p>
                 Swaps backgrounds and builds clean, studio-grade shots in seconds —
