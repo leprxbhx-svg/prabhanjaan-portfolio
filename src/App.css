@@ -27,7 +27,7 @@
    centering sitewide. Do not re-add margins/padding to a universal selector here. */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); -webkit-tap-highlight-color: transparent; }
 
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -345,7 +345,15 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Sections ---------- */
-.section { padding: 110px 0; position: relative; }
+.section {
+  padding: 110px 0;
+  position: relative;
+  /* Big perf win on scroll: the browser skips painting sections that are
+     offscreen (hero video cards, glass panels, shader content…) instead of
+     re-compositing the whole page every frame. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
 
 .eyebrow {
   font-size: 0.8rem;
@@ -754,3 +762,53 @@ a { color: inherit; text-decoration: none; }
 /* Center the scroll-animation header (eyebrow/title/sub) with the card */
 #works .section-sub { margin-inline: auto; }
 #works .scroll-header-inner { margin-left: auto; margin-right: auto; }
+
+/* ============================================================
+   Mobile & touch-device performance pass
+   Coarse pointers (phones/tablets) get the same look, but we drop
+   the GPU-heavy effects that make scrolling stutter:
+     · backdrop blur re-samples the animated shader canvas behind
+       every glass panel ON EVERY FRAME — the #1 jank source. Solid
+       glass (gradient + border + inner highlight) looks identical.
+     · whole-section / large-image transforms repaint every frame.
+     · Works videos stack in ONE readable column (no scroll-scale).
+   ============================================================ */
+@media (hover: none), (max-width: 720px) {
+  .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.02)
+      ),
+      rgba(12, 12, 16, 0.88);
+  }
+  .navbar.scrolled {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(10, 10, 12, 0.96);
+  }
+  .marquee {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(10, 10, 12, 0.62);
+    border-block-color: rgba(255, 255, 255, 0.1);
+  }
+  .footer {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(10, 10, 12, 0.78);
+  }
+
+  /* freeze continuous transforms that repaint large areas */
+  #about { animation: none; }
+  .hero-photo img { animation: none; }
+  .service-icon,
+  .service-icon.tool-logo { animation: none; }
+}
+
+@media (max-width: 720px) {
+  /* Works: one readable video column inside the scroll card */
+  .works-grid-scroll { grid-template-columns: 1fr; gap: 10px; }
+}

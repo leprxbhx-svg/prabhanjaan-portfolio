@@ -413,13 +413,19 @@ export function ShaderBackground({ className }: { className?: string }) {
     const start = performance.now()
     const timeAnimated = Math.abs(UNIFORMS.timeScale) > 0.0001
 
+    // Coarse-pointer devices (phones/tablets) get a much lighter render
+    // target: the shader is soft and flowy, so the lower DPR cap + smaller
+    // pixel budget is imperceptible, but it roughly halves the per-frame fill
+    // cost that competes with scrolling.
+    const coarsePointer = window.matchMedia("(hover: none)").matches
     const resizeCanvas = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      const dpr = Math.min(window.devicePixelRatio || 1, coarsePointer ? 1.4 : 2)
       const rawWidth = Math.max(1, Math.round(bounds.width * dpr))
       const rawHeight = Math.max(1, Math.round(bounds.height * dpr))
+      const pixelBudget = coarsePointer ? 850_000 : 2_000_000
       const pixelScale = Math.min(
         1,
-        Math.sqrt(2_000_000 / Math.max(1, rawWidth * rawHeight)),
+        Math.sqrt(pixelBudget / Math.max(1, rawWidth * rawHeight)),
       )
       const width = Math.max(1, Math.round(rawWidth * pixelScale))
       const height = Math.max(1, Math.round(rawHeight * pixelScale))
