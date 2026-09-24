@@ -434,6 +434,19 @@ a { color: inherit; text-decoration: none; }
 .service-card h3 { font-size: 1.06rem; margin-bottom: 8px; font-weight: 700; }
 .service-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
 
+/* eye-catching gradient phrases in the tools section */
+.tool-phrase {
+  font-family: "Sora", sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 14px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* ---------- Quote band ---------- */
 .quote-band {
   padding: 74px 0;

@@ -55,7 +55,7 @@ export default function App() {
     }
 
     // ---- Active nav link while scrolling ----
-    const sections = ["home", "about", "works", "contact"]
+    const sections = ["home", "about", "works", "tools", "contact"]
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
 
@@ -103,6 +103,7 @@ export default function App() {
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#works">Works</a>
+            <a href="#tools">Tools</a>
             <a href="#contact">Contact</a>
           </nav>
 
@@ -415,6 +416,65 @@ export default function App() {
             </p>
           </div>
         </section>
+
+      {/* ===== TOOLS ===== */}
+      <section className="section" id="tools">
+        <div className="container">
+          <p className="eyebrow reveal">My Toolkit</p>
+          <h2 className="section-title reveal">
+            The tools behind the cut<span className="accent">.</span>
+          </h2>
+          <p className="section-sub reveal">
+            Four powerhouses that keep my work sharp — fast to load, impossible to
+            put down. No bloat, just results.
+          </p>
+
+          <div className="services tools-grid">
+            <article className="service-card glass reveal">
+              <div className="service-icon">🎬</div>
+              <h3>CapCut</h3>
+              <p>
+                The free editor behind millions of trending reels — AI captions,
+                smooth transitions and one-tap templates that turn raw clips into
+                scroll-stopping shorts.
+              </p>
+              <p className="tool-phrase">“Edit fast. Post faster.”</p>
+            </article>
+
+            <article className="service-card glass reveal">
+              <div className="service-icon">✨</div>
+              <h3>After Effects</h3>
+              <p>
+                The industry standard for motion graphics and cinematic visual
+                effects — where titles, lower-thirds and visual storytelling truly
+                come alive.
+              </p>
+              <p className="tool-phrase">“Where motion comes alive.”</p>
+            </article>
+
+            <article className="service-card glass reveal">
+              <div className="service-icon">🎨</div>
+              <h3>Picsart</h3>
+              <p>
+                An all-in-one photo editor and design studio — thumbnails, posters
+                and social graphics, with stickers, text and cinematic filters
+                built right in.
+              </p>
+              <p className="tool-phrase">“Design without limits.”</p>
+            </article>
+
+            <article className="service-card glass reveal">
+              <div className="service-icon">📸</div>
+              <h3>PhotoRoom</h3>
+              <p>
+                Swaps backgrounds and builds clean, studio-grade shots in seconds —
+                a pocket photo studio for posters, thumbnails and product visuals.
+              </p>
+              <p className="tool-phrase">“A studio in your pocket.”</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
       {/* ===== CONTACT ===== */}
       <section className="section contact" id="contact">
