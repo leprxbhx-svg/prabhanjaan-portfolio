@@ -189,7 +189,7 @@ export default function App() {
           </div>
           </div>
 
-          <div className="hero-photo glass reveal">
+          <div className="hero-photo reveal">
             <img
               src="assets/profile.jpg"
               alt="Prabhanjaan G.T — Video Editor & Web Creator"
