@@ -134,7 +134,7 @@ export default function App() {
         <div className="hero-glow hero-glow-1"></div>
         <div className="hero-glow hero-glow-2"></div>
         <div className="container hero-inner">
-          <div className="hero-copy">
+          <div className="hero-copy glass">
           <div className="hero-pill reveal">
             <span className="pulse-dot"></span> Available for freelance projects
           </div>
@@ -189,7 +189,7 @@ export default function App() {
           </div>
           </div>
 
-          <div className="hero-photo reveal">
+          <div className="hero-photo glass reveal">
             <img
               src="assets/profile.jpg"
               alt="Prabhanjaan G.T — Video Editor & Web Creator"
@@ -232,7 +232,7 @@ export default function App() {
           </h2>
 
           <div className="about-grid">
-            <div className="about-text reveal">
+            <div className="about-text glass reveal">
               <p>
                 I'm <strong>Prabhanjaan</strong> — a professional video editor and web
                 creator who believes attention is earned, not demanded. From punchy reels
@@ -248,7 +248,7 @@ export default function App() {
             </div>
 
             <div className="services">
-              <article className="service-card reveal">
+              <article className="service-card glass reveal">
                 <div className="service-icon">🎬</div>
                 <h3>Video Editing</h3>
                 <p>
@@ -256,7 +256,7 @@ export default function App() {
                   first second.
                 </p>
               </article>
-              <article className="service-card reveal">
+              <article className="service-card glass reveal">
                 <div className="service-icon">📱</div>
                 <h3>Reels &amp; Shorts</h3>
                 <p>
@@ -264,7 +264,7 @@ export default function App() {
                   share.
                 </p>
               </article>
-              <article className="service-card reveal">
+              <article className="service-card glass reveal">
                 <div className="service-icon">🖥️</div>
                 <h3>Web Creation</h3>
                 <p>
@@ -272,7 +272,7 @@ export default function App() {
                   clients.
                 </p>
               </article>
-              <article className="service-card reveal">
+              <article className="service-card glass reveal">
                 <div className="service-icon">✨</div>
                 <h3>Motion &amp; Titles</h3>
                 <p>
@@ -288,10 +288,12 @@ export default function App() {
       {/* ===== QUOTE BAND ===== */}
       <section className="quote-band">
         <div className="container">
-          <p className="reveal">
-            “A great edit isn't measured in frames — it's measured in{" "}
-            <em>feelings</em>.”
-          </p>
+          <div className="quote-box glass reveal">
+            <p>
+              “A great edit isn't measured in frames — it's measured in{" "}
+              <em>feelings</em>.”
+            </p>
+          </div>
         </div>
       </section>
 
@@ -299,7 +301,7 @@ export default function App() {
       <section className="section" id="works">
         <ContainerScroll
           titleComponent={
-            <>
+            <div className="works-title-glass glass">
               <p className="eyebrow">My Works</p>
               <h2 className="section-title">
                 Works that speak louder than words<span className="accent">.</span>
@@ -307,11 +309,11 @@ export default function App() {
               <p className="section-sub">
                 Press play — no redirects, no downloads. Just the work.
               </p>
-            </>
+            </div>
           }
         >
           <div className="works-grid works-grid-scroll">
-            <article className="work-card">
+            <article className="work-card glass">
               <div className="work-media">
                 <video
                   controls
@@ -335,7 +337,7 @@ export default function App() {
               </div>
             </article>
 
-            <article className="work-card">
+            <article className="work-card glass">
               <div className="work-media">
                 <video
                   controls
@@ -358,7 +360,7 @@ export default function App() {
               </div>
             </article>
 
-            <article className="work-card">
+            <article className="work-card glass">
               <div className="work-media">
                 <video
                   controls
@@ -381,7 +383,7 @@ export default function App() {
               </div>
             </article>
 
-            <article className="work-card">
+            <article className="work-card glass">
               <div className="work-media">
                 <video
                   controls
@@ -408,7 +410,7 @@ export default function App() {
           </ContainerScroll>
 
           <div className="container">
-            <p className="works-note reveal">
+            <p className="works-note glass reveal">
               More edits dropping soon — follow on Instagram to see them first.
             </p>
           </div>
@@ -416,7 +418,7 @@ export default function App() {
 
       {/* ===== CONTACT ===== */}
       <section className="section contact" id="contact">
-        <div className="container contact-inner">
+        <div className="container contact-inner glass">
           <p className="eyebrow reveal">Contact</p>
           <h2 className="section-title reveal">
             Let's make something worth watching<span className="accent">.</span>
