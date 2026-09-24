@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import KineticGrid from "@/components/ui/kinetic-grid";
+import { ShaderBackground } from "@/components/ui/sih";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import "./App.css";
 
@@ -83,7 +83,15 @@ export default function App() {
   }, []);
 
   return (
-    <KineticGrid globalColor="default">
+    <div className="shader-stage">
+      {/* Animated shader background (replaces the old grid) */}
+      <div className="shader-canvas-wrap" aria-hidden="true">
+        <ShaderBackground className="h-full w-full" />
+      </div>
+      {/* Scrim keeps the bright shader from washing out the text */}
+      <div className="shader-scrim" aria-hidden="true"></div>
+
+      <div className="shader-content">
       {/* ===== NAVBAR ===== */}
       <header className="navbar" id="navbar">
         <div className="container nav-inner">
@@ -498,6 +506,7 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </KineticGrid>
+      </div>
+    </div>
   );
 }
