@@ -420,6 +420,52 @@ export default function App() {
                 </p>
               </div>
             </article>
+
+            <article className="work-card glass">
+              <div className="work-media">
+                <video
+                  controls
+                  preload="metadata"
+                  playsInline
+                  src="assets/reel-1.mp4"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="work-info">
+                <div className="work-meta">
+                  <span className="work-tag work-tag-alt">Reel Edit</span>
+                </div>
+                <h3 className="work-title">Sample 5</h3>
+                <p className="work-desc">
+                  A scroll-stopping reel — hook-first pacing built to hold attention
+                  down to the very last frame.
+                </p>
+              </div>
+            </article>
+
+            <article className="work-card glass">
+              <div className="work-media">
+                <video
+                  controls
+                  preload="metadata"
+                  playsInline
+                  src="assets/laptop.mp4"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="work-info">
+                <div className="work-meta">
+                  <span className="work-tag">Laptop Edit</span>
+                </div>
+                <h3 className="work-title">Sample 6</h3>
+                <p className="work-desc">
+                  Cut and graded right off the laptop — clean pacing and a crisp
+                  finish that feels tailor-made for the big screen.
+                </p>
+              </div>
+            </article>
           </div>
 
           </ContainerScroll>
