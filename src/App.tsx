@@ -327,7 +327,7 @@ export default function App() {
             </div>
           }
         >
-          <div className="works-grid works-grid-scroll">
+          <div className="works-grid">
             <article className="work-card glass">
               <div className="work-media">
                 <video

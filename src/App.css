@@ -751,22 +751,8 @@ a { color: inherit; text-decoration: none; }
   .contact-inner.glass { padding: 44px 22px; }
 }
 
-/* ---------- ContainerScroll works card ---------- */
-.works-grid-scroll {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.works-grid-scroll .work-media { aspect-ratio: 16 / 9; }
-.works-grid-scroll .work-info { padding: 12px 14px 14px; }
-.works-grid-scroll .work-title { font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.25; }
-.works-grid-scroll .work-desc { display: none; }
-.works-grid-scroll .work-meta { margin-bottom: 6px; }
-.works-grid-scroll .work-tag { font-size: 0.62rem; padding: 4px 10px; }
-
-/* Center the scroll-animation header (eyebrow/title/sub) with the card */
+/* Center the works header (eyebrow/title/sub) */
 #works .section-sub { margin-inline: auto; }
-#works .scroll-header-inner { margin-left: auto; margin-right: auto; }
 
 /* ============================================================
    Mobile & touch-device performance pass
@@ -815,9 +801,4 @@ a { color: inherit; text-decoration: none; }
   .hero-photo img { animation: none; }
   .service-icon,
   .service-icon.tool-logo { animation: none; }
-}
-
-@media (max-width: 720px) {
-  /* Works: one readable video column inside the scroll card */
-  .works-grid-scroll { grid-template-columns: 1fr; gap: 10px; }
 }
