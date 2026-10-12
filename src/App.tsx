@@ -334,6 +334,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
+                  poster="assets/poster-1.jpg"
                   src="assets/ALA%20BOLELO.mp4"
                 >
                   Your browser does not support the video tag.
@@ -358,6 +359,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
+                  poster="assets/poster-2.jpg"
                   src="assets/HUNTER%20350.mp4"
                 >
                   Your browser does not support the video tag.
@@ -381,6 +383,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
+                  poster="assets/poster-3.jpg"
                   src="assets/GT%20650%20KALYANI.mp4"
                 >
                   Your browser does not support the video tag.
@@ -404,6 +407,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
+                  poster="assets/poster-4.jpg"
                   src="assets/MEHABOOBA.mp4"
                 >
                   Your browser does not support the video tag.
@@ -427,6 +431,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
+                  poster="assets/poster-5.jpg"
                   src="assets/reel-1.mp4"
                 >
                   Your browser does not support the video tag.
@@ -450,6 +455,7 @@ export default function App() {
                   controls
                   preload="metadata"
                   playsInline
+                  poster="assets/poster-6.jpg"
                   src="assets/laptop.mp4"
                 >
                   Your browser does not support the video tag.
