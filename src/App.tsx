@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ShaderBackground } from "@/components/ui/sih";
+import { ShaderBackground, setShaderPaused } from "@/components/ui/sih";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { RandomLetterSwap } from "@/components/ui/random-letter-swap";
 import "./App.css";
@@ -88,6 +88,38 @@ export default function App() {
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("scroll", setActiveLink);
+    };
+  }, []);
+
+  // Give a playing work video the whole GPU: freeze the animated background
+  // (and its per-frame backdrop-blur cost) while any work video is playing, so
+  // playback stays smooth even on low-end phones.
+  useEffect(() => {
+    const videos = Array.from(
+      document.querySelectorAll<HTMLVideoElement>("#works video")
+    );
+    const playing = new Set<HTMLVideoElement>();
+    const refresh = () => setShaderPaused(playing.size > 0);
+    const onPlay = (e: Event) => {
+      playing.add(e.target as HTMLVideoElement);
+      refresh();
+    };
+    const onStop = (e: Event) => {
+      playing.delete(e.target as HTMLVideoElement);
+      refresh();
+    };
+    videos.forEach((v) => {
+      v.addEventListener("play", onPlay);
+      v.addEventListener("pause", onStop);
+      v.addEventListener("ended", onStop);
+    });
+    return () => {
+      videos.forEach((v) => {
+        v.removeEventListener("play", onPlay);
+        v.removeEventListener("pause", onStop);
+        v.removeEventListener("ended", onStop);
+      });
+      setShaderPaused(false);
     };
   }, []);
 
@@ -208,6 +240,7 @@ export default function App() {
             <img
               src="assets/profile.jpg"
               alt="Prabhanjaan G.T — Video Editor & Web Creator"
+              decoding="async"
             />
           </div>
         </div>
@@ -498,7 +531,12 @@ export default function App() {
           <div className="services tools-grid">
             <article className="service-card glass reveal">
               <div className="service-icon tool-logo">
-                <img src="assets/capcut-logo.jpg" alt="CapCut logo" />
+                <img
+                  src="assets/capcut-logo.jpg"
+                  alt="CapCut logo"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <h3>CapCut</h3>
               <p>
@@ -511,7 +549,12 @@ export default function App() {
 
             <article className="service-card glass reveal">
               <div className="service-icon tool-logo">
-                <img src="assets/after-effects-logo.webp" alt="Adobe After Effects logo" />
+                <img
+                  src="assets/after-effects-logo.webp"
+                  alt="Adobe After Effects logo"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <h3>After Effects</h3>
               <p>
@@ -524,7 +567,12 @@ export default function App() {
 
             <article className="service-card glass reveal">
               <div className="service-icon tool-logo">
-                <img src="assets/picsart-logo.webp" alt="Picsart logo" />
+                <img
+                  src="assets/picsart-logo.webp"
+                  alt="Picsart logo"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <h3>Picsart</h3>
               <p>
@@ -537,7 +585,12 @@ export default function App() {
 
             <article className="service-card glass reveal">
               <div className="service-icon tool-logo">
-                <img src="assets/photoroom-logo.avif" alt="PhotoRoom logo" />
+                <img
+                  src="assets/photoroom-logo.avif"
+                  alt="PhotoRoom logo"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <h3>PhotoRoom</h3>
               <p>

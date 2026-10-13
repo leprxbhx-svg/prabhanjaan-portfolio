@@ -309,6 +309,17 @@ const UNIFORMS = {
 
 const pendingContextReleases = new WeakMap<HTMLCanvasElement, number>()
 
+// --- External pause control -------------------------------------------------
+// The page pauses the background while a work video is playing, so the video
+// decoder and the compositor get the whole GPU and playback never stutters.
+let externalPause = false
+const renderers = new Set<() => void>()
+export function setShaderPaused(paused: boolean) {
+  if (externalPause === paused) return
+  externalPause = paused
+  renderers.forEach((fn) => fn())
+}
+
 export function ShaderBackground({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -411,13 +422,22 @@ export function ShaderBackground({ className }: { className?: string }) {
     let inView = true
     let disposed = false
     const start = performance.now()
-    const timeAnimated = Math.abs(UNIFORMS.timeScale) > 0.0001
+    const reduceMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const timeAnimated =
+      !reduceMotion && Math.abs(UNIFORMS.timeScale) > 0.0001
 
     // Coarse-pointer devices (phones/tablets) get a much lighter render
     // target: the shader is soft and flowy, so the lower DPR cap + smaller
     // pixel budget is imperceptible, but it roughly halves the per-frame fill
     // cost that competes with scrolling.
     const coarsePointer = window.matchMedia("(hover: none)").matches
+    // Cap the background to ~30fps on phones/tablets: every shader frame forces
+    // the frosted-glass panels above it to re-blur, so halving the draw rate is
+    // the single biggest scroll-smoothness win on mobile. The gradient is slow
+    // and soft, so 30fps is visually indistinguishable from 60.
+    const minFrameMs = coarsePointer ? 1000 / 30 : 0
+    let lastDraw = -Infinity
     const resizeCanvas = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, coarsePointer ? 1.4 : 2)
       const rawWidth = Math.max(1, Math.round(bounds.width * dpr))
@@ -437,10 +457,13 @@ export function ShaderBackground({ className }: { className?: string }) {
     }
 
     function requestRender() {
-      if (!disposed && visible && inView && raf === 0) {
+      if (!disposed && !externalPause && visible && inView && raf === 0) {
         raf = requestAnimationFrame(render)
       }
     }
+
+    const resume = () => requestRender()
+    renderers.add(resume)
 
     const updatePointerTarget = () => {
       if (!pointerKnown) return
@@ -518,7 +541,13 @@ export function ShaderBackground({ className }: { className?: string }) {
 
     function render(now: number) {
       raf = 0
-      if (disposed || !visible || !inView) return
+      if (disposed || externalPause || !visible || !inView) return
+      // Mobile frame-rate cap: skip draws but keep the rAF loop alive.
+      if (minFrameMs > 0 && now - lastDraw < minFrameMs - 1.5) {
+        raf = requestAnimationFrame(render)
+        return
+      }
+      lastDraw = now
       const dt = lastNow === null ? 0 : Math.min((now - lastNow) / 1000, 0.1)
       lastNow = now
       const follow = 1 - Math.exp(-12 * dt)
@@ -561,6 +590,7 @@ export function ShaderBackground({ className }: { className?: string }) {
     return () => {
       disposed = true
       cancelAnimationFrame(raf)
+      renderers.delete(resume)
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
       document.removeEventListener("visibilitychange", onVisibilityChange)
